@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calen – Night Reset</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <img src="logo.png" alt="Calen Logo" class="logo">
+  <div class="instagram">@Calen.life</div>
+</header>
+
+<section class="section center">
+  <h1 class="brand">Calen</h1>
+  <h2 class="subtitle">Night Reset</h2>
+  <p class="tagline">A calmer way to end the day</p>
+</section>
+
+<section class="section center">
+  <p class="text">
+    این چند دقیقه،<br>
+    برای آرام شدن است.<br>
+    برای تو.
+  </p>
+</section>
+
+<section class="section">
+  <p class="text">
+    اگر مایل بودی…<br>
+    جایی راحت بنشین یا دراز بکش.<br>
+    نور صفحه را کمی کمتر کن.<br><br>
+
+    اگر دمنوش همراهت است، آرام بنوش.<br>
+    و اگر شمعی داری، روشن کردنش می‌تواند فضا را آرام‌تر کند.<br><br>
+
+    می‌توانی فقط گوش بدهی،<br>
+    یا اجازه بدهی ذهنت آرام‌تر شود.
+  </p>
+</section>
+
+<!-- Music -->
+<section class="section center">
+  <p class="text">موسیقی برای همراهی این چند دقیقه</p>
+
+  <div class="track" onclick="playTrack(0)">🎧 Arrival <span>برای ورود آرام</span></div>
+  <div class="track" onclick="playTrack(1)">🎧 Release <span>برای رها شدن از شلوغی ذهن</span></div>
+  <div class="track" onclick="playTrack(2)">🎧 Settle <span>برای آرام گرفتن</span></div>
+
+  <audio id="audio-player"></audio>
+</section>
+
+<section class="section">
+  <p class="text">
+    اگر آمادگی‌اش را داری،<br>
+    می‌توانی کمی مکث کنی و ادامه بدهی.<br><br>
+    و اگر نه،<br>
+    همین‌جا هم کافی‌ست.
+  </p>
+</section>
+
+<section class="section reflection">
+  <p class="question">
+    امشب،<br>
+    کدام فکر را لازم نیست<br>
+    با خودت به خواب ببری؟
+  </p>
+
+  <p class="question">
+    بدنت در این لحظه،<br>
+    بیشتر به چه چیزی نیاز دارد؟
+  </p>
+
+  <p class="question">
+    یک اتفاق یا حس کوچک<br>
+    که امروز بابتش قدردان هستی…<br><br>
+    نیازی به پاسخ دادن نیست.<br>
+    همین مکث، کافی‌ست.
+  </p>
+</section>
+
+<section class="section center end">
+  <p class="text">برای امروز، همین اندازه کافی‌ست.</p>
+  <p class="brand small">Calen</p>
+</section>
+
+<script>
+/* ===== تنظیم ترک‌ها ===== */
+const tracks = [
+  { title: "Arrival", file: "music/arrival.mp3" },
+  { title: "Release", file: "music/release.mp3" },
+  { title: "Settle",  file: "music/settle.mp3" }
+];
+
+const player = document.getElementById("audio-player");
+let currentTrack = null;
+let fadeInterval = null;
+
+/* ===== Fade In ===== */
+function fadeIn(duration = 4000) {
+  player.volume = 0;
+  let step = 0.02;
+  fadeInterval = setInterval(() => {
+    if (player.volume < 1) {
+      player.volume = Math.min(player.volume + step, 1);
+    } else {
+      clearInterval(fadeInterval);
+    }
+  }, duration * step);
+}
+
+/* ===== پخش ترک ===== */
+function playTrack(index) {
+  if (currentTrack === index && !player.paused) {
+    player.pause();
+    return;
+  }
+
+  currentTrack = index;
+  player.src = tracks[index].file;
+  player.play();
+  fadeIn();
+}
+
+/* ===== پخش خودکار ترک بعدی ===== */
+player.addEventListener("ended", () => {
+  if (currentTrack !== null && currentTrack < tracks.length - 1) {
+    currentTrack++;
+    player.src = tracks[currentTrack].file;
+    player.play();
+    fadeIn();
+  }
+});
+</script>
+
+</body>
+</html>
