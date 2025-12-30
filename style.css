@@ -1,172 +1,286 @@
-:root {
-  --bg-main: #0f1216;
-  --bg-soft: rgba(255, 255, 255, 0.04);
-  --text-main: #e6e8eb;
-  --text-soft: #a9adb3;
-  --accent: #9aa6b2;
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500&display=swap');
+
+:root{
+  --primary: #c7c1ea;
+  --primary-2: #9e90ff;
+
+  --bg: #0b0c12;
+  --bg-2: #0f1120;
+
+  --text: #e9e9f2;
+  --muted: rgba(233,233,242,0.70);
+  --muted-2: rgba(233,233,242,0.55);
+
+  --card: rgba(255,255,255,0.06);
+  --card-2: rgba(199,193,234,0.12);
+  --border: rgba(199,193,234,0.22);
+
+  --shadow: 0 12px 40px rgba(0,0,0,0.45);
 }
 
-* {
-  box-sizing: border-box;
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  font-family:'Vazirmatn', sans-serif;
+  background:
+    radial-gradient(900px 500px at 20% 0%, rgba(199,193,234,0.18), transparent 55%),
+    radial-gradient(700px 450px at 85% 10%, rgba(158,144,255,0.10), transparent 55%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  color: var(--text);
+  line-height: 1.95;
 }
 
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--bg-main);
-  color: var(--text-main);
-  line-height: 1.8;
+/* ===== header ===== */
+.header{
+  direction:ltr; /* برای اینکه لوگو واقعاً سمت چپ و عنوان سمت راست بشینه */
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+
+  padding: 16px 14px 10px;
+  padding-left: calc(14px + env(safe-area-inset-left));
+  padding-right: calc(14px + env(safe-area-inset-right));
 }
 
-/* Layout */
-.container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 24px;
+.card{
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
 }
 
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+.header-left{
+  width: 178px;
+  padding: 10px 10px 8px;
+  text-align:center;
 }
 
-.brand-box {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.logo{
+  display:block;
+  max-width: 96px;   /* کوچیک‌تر */
+  width: 100%;
+  height:auto;
+  margin: 2px auto 8px;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.30));
 }
 
-.logo {
-  width: 70px; /* به‌راحتی قابل تغییر */
+.instagram{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+
+  font-size: 13px;
+  color: var(--primary);
+  opacity: 0.95;
 }
 
-.instagram {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.85rem;
-  color: var(--text-soft);
+.ig-icon{
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  opacity: 0.9;
 }
 
-.header-text {
-  text-align: right;
+.header-right{
+  direction:ltr;
+  text-align:right;
+  flex:1;
+  padding-right: 2px;
 }
 
-.header-text h1 {
-  font-size: 1.6rem;
-  margin: 0;
+.header-title{
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--primary);
+  letter-spacing: 0.2px;
+  text-shadow: 0 10px 28px rgba(199,193,234,0.25);
+}
+
+.header-tagline{
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ===== sections ===== */
+.section{
+  padding: 22px 18px;
+}
+
+.center{ text-align:center; }
+
+.text{
+  font-size: 16px;
+  color: rgba(233,233,242,0.92);
+}
+
+.brand{
+  font-size: 28px;
   font-weight: 500;
 }
 
-.tagline {
-  font-size: 0.9rem;
-  color: var(--text-soft);
-  margin-top: 6px;
+.brand.small{
+  font-size: 20px;
+  margin-top: 14px;
+  color: rgba(233,233,242,0.92);
 }
 
-/* Safe message */
-.safe-message {
-  margin: 32px 0;
-  padding: 20px;
-  font-size: 1.1rem;
-  text-align: center;
-  background: var(--bg-soft);
-  border-radius: 12px;
+.end{
+  padding-bottom: 58px;
 }
 
-/* Gentle guide */
-.gentle-guide {
-  list-style: none;
-  padding: 0;
-  margin: 32px 0;
+/* ===== focus card (این چند دقیقه...) ===== */
+.focus-card{
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 18px 16px;
+
+  background: var(--card-2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.40);
 }
 
-.gentle-guide li {
-  margin-bottom: 12px;
-  padding-right: 22px;
+.focus-text{
+  font-size: 19px;      /* بزرگ‌تر */
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  margin: 0;
+}
+
+/* ===== subtle pre-icons ===== */
+.preicon{
+  display:inline-flex;
+  width: 18px;
+  height: 18px;
+  margin-left: 10px; /* چون RTL هست، فاصله به سمت چپ خوب می‌شینه */
+  vertical-align: -3px;
+  opacity: 0.55;
+}
+
+.preicon svg{
+  width: 18px;
+  height: 18px;
+  fill: rgba(233,233,242,0.70);
+}
+
+/* ===== music ===== */
+.track{
+  max-width: 520px;
+  margin: 12px auto;
+  padding: 12px 12px;
+
+  display:flex;
+  align-items:center;
+  gap: 12px;
+
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  cursor: pointer;
+
+  transition: transform 120ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.track:active{ transform: scale(0.99); }
+
+.track-label{
+  text-align:right;
+  flex: 1;
+  font-size: 16px;
+  color: rgba(233,233,242,0.95);
+}
+
+.track-label span{
+  display:block;
+  font-size: 13px;
+  color: var(--muted-2);
+  margin-top: 3px;
+}
+
+.track-btn{
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(199,193,234,0.28);
+  background: rgba(199,193,234,0.10);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  cursor: pointer;
+
   position: relative;
-  color: var(--text-soft);
+  flex: 0 0 42px;
 }
 
-.gentle-guide li::before {
-  content: "◦";
-  position: absolute;
-  right: 0;
-  color: var(--accent);
+.track-btn:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(199,193,234,0.18), 0 10px 30px rgba(0,0,0,0.35);
 }
 
-/* Music */
-.music {
-  margin: 40px 0;
+/* Play icon */
+.track-btn::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-35%,-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid rgba(233,233,242,0.90);
+  opacity: 0.95;
 }
 
-.music h2 {
-  font-size: 1rem;
-  margin-bottom: 12px;
-  color: var(--text-soft);
-  font-weight: 400;
+/* When playing -> Pause icon */
+.track.is-playing{
+  background: rgba(199,193,234,0.10);
+  border-color: rgba(199,193,234,0.22);
 }
 
-audio {
-  width: 100%;
-  margin-bottom: 16px;
-  filter: brightness(0.9);
+.track.is-playing .track-btn::before{
+  border: none;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%,-50%);
+  left:50%;
+  top:50%;
+  background:
+    linear-gradient(90deg,
+      rgba(233,233,242,0.92) 0 35%,
+      transparent 35% 55%,
+      rgba(233,233,242,0.92) 55% 100%);
+  border-radius: 2px;
 }
 
-/* Transition text */
-.transition {
-  margin: 40px 0;
+/* ===== reflection (questions) ===== */
+.reflection{
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  margin: 0 14px;
+  box-shadow: var(--shadow);
 }
 
-.transition p {
-  position: relative;
-  padding-right: 22px;
-  color: var(--text-soft);
-  margin-bottom: 12px;
-}
-
-.transition p::before {
-  content: "❍";
-  position: absolute;
-  right: 0;
-  color: var(--accent);
-}
-
-/* Reflection */
-.reflection {
+.questions{
   list-style: disc;
-  text-align: center;
-  padding: 0;
-  margin: 40px 0;
+  list-style-position: inside;
+  padding: 16px 14px 6px;
+  margin: 0;
+  text-align: center; /* وسط‌چین */
 }
 
-.reflection li {
-  margin: 18px auto;
-  max-width: 85%;
-  color: var(--text-soft);
+.question{
+  margin: 18px 0 22px;
+  color: rgba(233,233,242,0.92);
 }
 
-/* Footer */
-.footer {
-  text-align: center;
-  margin: 48px 0 24px;
-  color: var(--text-soft);
-  font-size: 0.9rem;
-}
-
-/* Mobile tweaks */
-@media (max-width: 600px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .header-text {
-    text-align: left;
-  }
+/* ===== small mobile polish ===== */
+@media (max-width: 360px){
+  .header-left{ width: 160px; }
+  .header-title{ font-size: 17px; }
+  .focus-text{ font-size: 18px; }
 }
