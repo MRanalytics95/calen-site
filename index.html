@@ -9,61 +9,49 @@
 <body>
 
 <header class="header">
-  <!-- Left: logo + instagram in one card (left side of screen) -->
-  <div class="header-left card">
+  <!-- Right: logo + instagram (no box, no @ in the id) -->
+  <div class="header-brand">
     <img src="logo.png" alt="Calen Logo" class="logo">
 
     <div class="instagram">
-      <!-- Instagram icon -->
       <svg class="ig-icon" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm4.5 4.2a5.8 5.8 0 1 1 0 11.6a5.8 5.8 0 0 1 0-11.6Zm0 2a3.8 3.8 0 1 0 0 7.6a3.8 3.8 0 0 0 0-7.6Zm6.2-2.5a1.1 1.1 0 1 1 0 2.2a1.1 1.1 0 0 1 0-2.2Z"/>
       </svg>
-      <span>@Calen.life</span>
+      <span>Calen.life</span>
     </div>
   </div>
 
-  <!-- Right: Night Reset + tagline -->
-  <div class="header-right">
+  <!-- Left: Night Reset + tagline (left-aligned) -->
+  <div class="header-copy">
     <div class="header-title">Night Reset</div>
     <div class="header-tagline">A calmer way to end the day</div>
   </div>
 </header>
 
 <section class="section center">
-  <div class="focus-card">
-    <p class="text focus-text">
-      این چند دقیقه،<br>
-      برای آرام شدن است.<br>
-      برای تو.
-    </p>
-  </div>
+  <p class="text focus-text">
+    این چند دقیقه،<br>
+    برای آرام شدن است.<br>
+    برای تو.
+  </p>
 </section>
 
 <section class="section">
   <p class="text">
     <span class="preicon" aria-hidden="true">
-      <!-- comfy / rest icon -->
-      <svg viewBox="0 0 24 24"><path d="M7 7a3 3 0 1 1 6 0v6H7V7Zm-3 8h16a2 2 0 0 1 2 2v2h-2v-1H4v1H2v-2a2 2 0 0 1 2-2Zm11-8h2a5 5 0 0 1 5 5v3h-2v-3a3 3 0 0 0-3-3h-2V7Z"/></svg>
+      <!-- calm / start icon -->
+      <svg viewBox="0 0 24 24"><path d="M12 3c4.4 0 8 3.6 8 8c0 5.2-4.3 9.8-8 10c-3.7-.2-8-4.8-8-10c0-4.4 3.6-8 8-8Zm0 2a6 6 0 0 0-6 6c0 4.1 3.5 7.9 6 8c2.5-.1 6-3.9 6-8a6 6 0 0 0-6-6Z"/></svg>
     </span>
     اگر مایل بودی…<br>
-
-    <span class="preicon" aria-hidden="true">
-      <!-- sit/relax icon -->
-      <svg viewBox="0 0 24 24"><path d="M9 4a2 2 0 1 1 0 4a2 2 0 0 1 0-4Zm2 6h2l2 4h3v2h-4l-1.2-2.4V20H11v-6.4L9.8 16H6v-2h2.7L11 10Z"/></svg>
-    </span>
     جایی راحت بنشین یا دراز بکش.<br>
-
-    <span class="preicon" aria-hidden="true">
-      <!-- brightness / moon icon -->
-      <svg viewBox="0 0 24 24"><path d="M21 14.2A8.5 8.5 0 0 1 9.8 3a7 7 0 1 0 11.2 11.2Z"/></svg>
-    </span>
     نور صفحه را کمی کمتر کن.<br><br>
 
+    <span class="preicon" aria-hidden="true">
+      <!-- tea icon -->
+      <svg viewBox="0 0 24 24"><path d="M4 7h10v6a5 5 0 0 1-5 5H7a3 3 0 0 1-3-3V7Zm2 2v6a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3V9H6Zm10 1h2a3 3 0 1 1 0 6h-2v-2h2a1 1 0 1 0 0-2h-2v-2Z"/></svg>
+    </span>
     اگر دمنوش همراهت است، آرام بنوش.<br>
     و اگر شمعی داری، روشن کردنش می‌تواند فضا را آرام‌تر کند.<br><br>
-
-    می‌توانی فقط گوش بدهی،<br>
-    یا اجازه بدهی ذهنت آرام‌تر شود.
   </p>
 </section>
 
@@ -92,7 +80,7 @@
 <section class="section">
   <p class="text">
     <span class="preicon" aria-hidden="true">
-      <!-- pause / breath icon -->
+      <!-- pause icon -->
       <svg viewBox="0 0 24 24"><path d="M10 5h2v14h-2V5Zm4 0h2v14h-2V5Z"/></svg>
     </span>
     اگر آمادگی‌اش را داری،<br>
@@ -108,25 +96,52 @@
 </section>
 
 <section class="section reflection">
-  <ul class="questions">
-    <li class="question">
-      امشب،<br>
-      کدام فکر را لازم نیست<br>
-      با خودت به خواب ببری؟
-    </li>
+  <div class="questions">
+    <div class="qitem">
+      <span class="qicon" aria-hidden="true">
+        <!-- moon -->
+        <svg viewBox="0 0 24 24"><path d="M21 14.2A8.5 8.5 0 0 1 9.8 3a7 7 0 1 0 11.2 11.2Z"/></svg>
+      </span>
+      <div class="qtext">
+        <div class="question">
+          امشب،<br>
+          کدام فکر را لازم نیست<br>
+          با خودت به خواب ببری؟
+        </div>
+      </div>
+    </div>
 
-    <li class="question">
-      بدنت در این لحظه،<br>
-      بیشتر به چه چیزی نیاز دارد؟
-    </li>
+    <div class="qitem">
+      <span class="qicon" aria-hidden="true">
+        <!-- body / heart -->
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.3-9C1.1 9.1 2.7 6 6.1 6c1.8 0 3 .9 3.9 2c.9-1.1 2.1-2 3.9-2c3.4 0 5 3.1 3.4 6c-2.3 4.4-9.3 9-9.3 9Z"/></svg>
+      </span>
+      <div class="qtext">
+        <div class="question">
+          بدنت در این لحظه،<br>
+          بیشتر به چه چیزی نیاز دارد؟
+        </div>
+      </div>
+    </div>
 
-    <li class="question">
-      یک اتفاق یا حس کوچک<br>
-      که امروز بابتش قدردان هستی…<br><br>
-      نیازی به پاسخ دادن نیست.<br>
-      همین مکث، کافی‌ست.
-    </li>
-  </ul>
+    <div class="qitem">
+      <span class="qicon" aria-hidden="true">
+        <!-- spark -->
+        <svg viewBox="0 0 24 24"><path d="M12 2l1.6 6.1L20 12l-6.4 3.9L12 22l-1.6-6.1L4 12l6.4-3.9L12 2Z"/></svg>
+      </span>
+      <div class="qtext">
+        <div class="question">
+          یک اتفاق یا حس کوچک<br>
+          که امروز بابتش قدردان هستی…<br><br>
+        </div>
+
+        <div class="note-center">
+          نیازی به پاسخ دادن نیست.<br>
+          همین مکث، کافی‌ست.
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section center end">
@@ -161,7 +176,7 @@ function fadeIn(duration = 2500) {
   clearInterval(fadeInterval);
   player.volume = 0;
 
-  const step = 0.03; // bigger step for smoother mobile feel
+  const step = 0.03;
   const tick = Math.max(16, Math.floor(duration * step));
   fadeInterval = setInterval(() => {
     if (player.paused) {
@@ -192,9 +207,7 @@ async function playTrack(index) {
   try {
     await player.play();
     fadeIn();
-  } catch (e) {
-    // autoplay restrictions / gesture issues
-  }
+  } catch (e) {}
   syncUI();
 }
 
@@ -203,7 +216,6 @@ trackEls.forEach((el) => {
   const index = Number(el.dataset.index);
 
   el.addEventListener("click", (ev) => {
-    // prevent double-trigger when button inside is clicked
     ev.preventDefault();
     playTrack(index);
   });

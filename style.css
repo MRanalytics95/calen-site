@@ -12,10 +12,13 @@
   --muted-2: rgba(233,233,242,0.55);
 
   --card: rgba(255,255,255,0.06);
-  --card-2: rgba(199,193,234,0.12);
-  --border: rgba(199,193,234,0.22);
 
-  --shadow: 0 12px 40px rgba(0,0,0,0.45);
+  /* spacing system (یکدست و موزون) */
+  --section-pad-y: 20px;
+  --section-pad-x: 18px;
+
+  /* فاصله‌ی عمودی داخل هدر (برای هر دو ستون یکسان) */
+  --header-vgap: 6px; /* نسبت به قبل ~۲۰٪ بیشتر (و محسوس‌تر روی موبایل) */
 }
 
 *{ box-sizing: border-box; }
@@ -31,48 +34,42 @@ body{
   line-height: 1.95;
 }
 
+/* reset margins for uniform rhythm */
+p{ margin:0; }
+
 /* ===== header ===== */
 .header{
-  direction:ltr; /* برای اینکه لوگو واقعاً سمت چپ و عنوان سمت راست بشینه */
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:14px;
+  gap: 14px;
 
-  padding: 16px 14px 10px;
-  padding-left: calc(14px + env(safe-area-inset-left));
-  padding-right: calc(14px + env(safe-area-inset-right));
+  padding: 16px var(--section-pad-x) 10px;
+  padding-left: calc(var(--section-pad-x) + env(safe-area-inset-left));
+  padding-right: calc(var(--section-pad-x) + env(safe-area-inset-right));
 }
 
-.card{
-  background: var(--card);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(10px);
-}
-
-.header-left{
-  width: 178px;
-  padding: 10px 10px 8px;
-  text-align:center;
+/* Right column: logo + instagram (no box) */
+.header-brand{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap: var(--header-vgap);
+  text-align:right;
 }
 
 .logo{
   display:block;
-  max-width: 96px;   /* کوچیک‌تر */
-  width: 100%;
+  width: 88px;         /* کوچیک‌تر */
   height:auto;
-  margin: 2px auto 8px;
   filter: drop-shadow(0 8px 16px rgba(0,0,0,0.30));
 }
 
 .instagram{
   display:flex;
   align-items:center;
-  justify-content:center;
+  justify-content:flex-end;
   gap:7px;
-
   font-size: 13px;
   color: var(--primary);
   opacity: 0.95;
@@ -85,11 +82,16 @@ body{
   opacity: 0.9;
 }
 
-.header-right{
-  direction:ltr;
-  text-align:right;
+/* Left column: Night Reset + tagline (left-aligned) */
+.header-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap: var(--header-vgap);
+
   flex:1;
-  padding-right: 2px;
+  direction:ltr;      /* متن انگلیسی */
+  text-align:left;    /* چپ‌چین */
 }
 
 .header-title{
@@ -103,53 +105,30 @@ body{
 .header-tagline{
   font-size: 13px;
   color: var(--muted);
-  margin-top: 2px;
 }
 
 /* ===== sections ===== */
 .section{
-  padding: 22px 18px;
+  padding: var(--section-pad-y) var(--section-pad-x);
 }
 
 .center{ text-align:center; }
 
+/* default: justify for text blocks, except centered sections */
 .text{
   font-size: 16px;
   color: rgba(233,233,242,0.92);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
-.brand{
-  font-size: 28px;
-  font-weight: 500;
-}
+.center .text{ text-align: center; }
 
-.brand.small{
-  font-size: 20px;
-  margin-top: 14px;
-  color: rgba(233,233,242,0.92);
-}
-
-.end{
-  padding-bottom: 58px;
-}
-
-/* ===== focus card (این چند دقیقه...) ===== */
-.focus-card{
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 18px 16px;
-
-  background: var(--card-2);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.40);
-}
-
+/* focus text: box removed + 20% smaller */
 .focus-text{
-  font-size: 19px;      /* بزرگ‌تر */
+  font-size: 15.5px; /* ~۲۰٪ کوچیک‌تر نسبت به 19px قبلی */
   font-weight: 500;
   letter-spacing: 0.1px;
-  margin: 0;
 }
 
 /* ===== subtle pre-icons ===== */
@@ -157,7 +136,7 @@ body{
   display:inline-flex;
   width: 18px;
   height: 18px;
-  margin-left: 10px; /* چون RTL هست، فاصله به سمت چپ خوب می‌شینه */
+  margin-left: 10px;
   vertical-align: -3px;
   opacity: 0.55;
 }
@@ -257,30 +236,86 @@ body{
 }
 
 /* ===== reflection (questions) ===== */
-.reflection{
+/* نصف شدن فاصله‌ی کادر با متن از بالا و پایین */
+.section.reflection{
+  padding-top: calc(var(--section-pad-y) / 2);
+  padding-bottom: calc(var(--section-pad-y) / 2);
+
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 20px;
-  margin: 0 14px;
-  box-shadow: var(--shadow);
 }
 
 .questions{
-  list-style: disc;
-  list-style-position: inside;
-  padding: 16px 14px 6px;
-  margin: 0;
-  text-align: center; /* وسط‌چین */
+  display:flex;
+  flex-direction:column;
+  gap: 18px; /* فاصله‌های موزون و هم‌اندازه */
+}
+
+.qitem{
+  display:flex;
+  align-items:flex-start;
+  gap: 10px;
+}
+
+.qicon{
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-top: 3px;
+  opacity: 0.55;
+}
+
+.qicon svg{
+  width: 18px;
+  height: 18px;
+  fill: rgba(233,233,242,0.72);
+}
+
+.qtext{
+  flex:1;
+  text-align:right; /* سوالات راست‌چین */
 }
 
 .question{
-  margin: 18px 0 22px;
+  text-align:right;
   color: rgba(233,233,242,0.92);
 }
 
-/* ===== small mobile polish ===== */
+.note-center{
+  text-align:center; /* فقط این جمله وسط‌چین بماند */
+  color: rgba(233,233,242,0.90);
+}
+
+/* ===== footer ===== */
+.end{
+  padding-bottom: 58px;
+}
+
+.brand{
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.brand.small{
+  font-size: 20px;
+  margin-top: 14px;
+}
+
+/* هماهنگ‌سازی رنگ/فونت انتهای صفحه با هدر */
+.end .text{
+  color: var(--muted);
+  text-align:center;
+}
+
+.end .brand.small{
+  color: var(--primary);
+  text-shadow: 0 10px 28px rgba(199,193,234,0.25);
+}
+
+/* small mobile polish */
 @media (max-width: 360px){
-  .header-left{ width: 160px; }
+  .logo{ width: 82px; }
   .header-title{ font-size: 17px; }
-  .focus-text{ font-size: 18px; }
+  .focus-text{ font-size: 15px; }
 }
