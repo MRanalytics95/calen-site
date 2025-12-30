@@ -1,139 +1,231 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Calen – Night Reset</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <title>Night Reset – Calen</title>
 
-<header class="header">
-  <img src="logo.png" alt="Calen Logo" class="logo">
-  <div class="instagram">@Calen.life</div>
-</header>
+  <!-- Instagram icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<section class="section center">
-  <h1 class="brand">Calen</h1>
-  <h2 class="subtitle">Night Reset</h2>
-  <p class="tagline">A calmer way to end the day</p>
-</section>
-
-<section class="section center">
-  <p class="text">
-    این چند دقیقه،<br>
-    برای آرام شدن است.<br>
-    برای تو.
-  </p>
-</section>
-
-<section class="section">
-  <p class="text">
-    اگر مایل بودی…<br>
-    جایی راحت بنشین یا دراز بکش.<br>
-    نور صفحه را کمی کمتر کن.<br><br>
-
-    اگر دمنوش همراهت است، آرام بنوش.<br>
-    و اگر شمعی داری، روشن کردنش می‌تواند فضا را آرام‌تر کند.<br><br>
-
-    می‌توانی فقط گوش بدهی،<br>
-    یا اجازه بدهی ذهنت آرام‌تر شود.
-  </p>
-</section>
-
-<!-- Music -->
-<section class="section center">
-  <p class="text">موسیقی برای همراهی این چند دقیقه</p>
-
-  <div class="track" onclick="playTrack(0)">🎧 Arrival <span>برای ورود آرام</span></div>
-  <div class="track" onclick="playTrack(1)">🎧 Release <span>برای رها شدن از شلوغی ذهن</span></div>
-  <div class="track" onclick="playTrack(2)">🎧 Settle <span>برای آرام گرفتن</span></div>
-
-  <audio id="audio-player"></audio>
-</section>
-
-<section class="section">
-  <p class="text">
-    اگر آمادگی‌اش را داری،<br>
-    می‌توانی کمی مکث کنی و ادامه بدهی.<br><br>
-    و اگر نه،<br>
-    همین‌جا هم کافی‌ست.
-  </p>
-</section>
-
-<section class="section reflection">
-  <p class="question">
-    امشب،<br>
-    کدام فکر را لازم نیست<br>
-    با خودت به خواب ببری؟
-  </p>
-
-  <p class="question">
-    بدنت در این لحظه،<br>
-    بیشتر به چه چیزی نیاز دارد؟
-  </p>
-
-  <p class="question">
-    یک اتفاق یا حس کوچک<br>
-    که امروز بابتش قدردان هستی…<br><br>
-    نیازی به پاسخ دادن نیست.<br>
-    همین مکث، کافی‌ست.
-  </p>
-</section>
-
-<section class="section center end">
-  <p class="text">برای امروز، همین اندازه کافی‌ست.</p>
-  <p class="brand small">Calen</p>
-</section>
-
-<script>
-/* ===== تنظیم ترک‌ها ===== */
-const tracks = [
-  { title: "Arrival", file: "music/arrival.mp3" },
-  { title: "Release", file: "music/release.mp3" },
-  { title: "Settle",  file: "music/settle.mp3" }
-];
-
-const player = document.getElementById("audio-player");
-let currentTrack = null;
-let fadeInterval = null;
-
-/* ===== Fade In ===== */
-function fadeIn(duration = 4000) {
-  player.volume = 0;
-  let step = 0.02;
-  fadeInterval = setInterval(() => {
-    if (player.volume < 1) {
-      player.volume = Math.min(player.volume + step, 1);
-    } else {
-      clearInterval(fadeInterval);
+  <style>
+    :root {
+      --bg-main: #0f1216;
+      --bg-soft: rgba(255,255,255,0.04);
+      --text-main: #e6e8eb;
+      --text-soft: #a9adb3;
+      --accent: #9aa6b2;
     }
-  }, duration * step);
-}
 
-/* ===== پخش ترک ===== */
-function playTrack(index) {
-  if (currentTrack === index && !player.paused) {
-    player.pause();
-    return;
-  }
+    * {
+      box-sizing: border-box;
+    }
 
-  currentTrack = index;
-  player.src = tracks[index].file;
-  player.play();
-  fadeIn();
-}
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.8;
+    }
 
-/* ===== پخش خودکار ترک بعدی ===== */
-player.addEventListener("ended", () => {
-  if (currentTrack !== null && currentTrack < tracks.length - 1) {
-    currentTrack++;
-    player.src = tracks[currentTrack].file;
-    player.play();
-    fadeIn();
-  }
-});
-</script>
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px;
+    }
 
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .brand-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .logo {
+      width: 70px;
+    }
+
+    .instagram {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    .header-text {
+      text-align: right;
+    }
+
+    .header-text h1 {
+      font-size: 1.6rem;
+      margin: 0;
+    }
+
+    .tagline {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      margin-top: 6px;
+    }
+
+    /* Safe message */
+    .safe-message {
+      margin: 32px 0;
+      padding: 20px;
+      font-size: 1.1rem;
+      text-align: center;
+      background: var(--bg-soft);
+      border-radius: 12px;
+    }
+
+    /* Gentle guide */
+    .gentle-guide {
+      list-style: none;
+      padding: 0;
+      margin: 32px 0;
+    }
+
+    .gentle-guide li {
+      margin-bottom: 12px;
+      padding-right: 22px;
+      position: relative;
+      color: var(--text-soft);
+    }
+
+    .gentle-guide li::before {
+      content: "◦";
+      position: absolute;
+      right: 0;
+      color: var(--accent);
+    }
+
+    /* Music */
+    .music {
+      margin: 40px 0;
+    }
+
+    .music h2 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: var(--text-soft);
+    }
+
+    audio {
+      width: 100%;
+      margin-bottom: 16px;
+      filter: brightness(0.9);
+    }
+
+    /* Transition text */
+    .transition {
+      margin: 40px 0;
+    }
+
+    .transition p {
+      position: relative;
+      padding-right: 22px;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+
+    .transition p::before {
+      content: "❍";
+      position: absolute;
+      right: 0;
+      color: var(--accent);
+    }
+
+    /* Reflection */
+    .reflection {
+      list-style: disc;
+      text-align: center;
+      padding: 0;
+      margin: 40px 0;
+    }
+
+    .reflection li {
+      margin: 18px auto;
+      max-width: 85%;
+      color: var(--text-soft);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin: 48px 0 24px;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="brand-box">
+        <img src="logo.png" alt="Calen logo" class="logo">
+        <div class="instagram">
+          <i class="fa-brands fa-instagram"></i>
+          <span>Calen.life</span>
+        </div>
+      </div>
+
+      <div class="header-text">
+        <h1>Night Reset</h1>
+        <p class="tagline">A calmer way to end the day</p>
+      </div>
+    </header>
+
+    <!-- Safe message -->
+    <section class="safe-message">
+      این چند دقیقه فقط برای توست.
+    </section>
+
+    <!-- Gentle guide -->
+    <ul class="gentle-guide">
+      <li>جایی راحت بنشین یا دراز بکش.</li>
+      <li>اگر دوست داشتی، یک دمنوش گرم کنار دستت بگذار.</li>
+      <li>می‌توانی شمع را روشن کنی و نور صفحه را کمی کم‌تر کنی.</li>
+    </ul>
+
+    <!-- Music -->
+    <section class="music">
+      <h2>همراه آرام شبانه</h2>
+
+      <audio controls src="music/arrival.mp3"></audio>
+      <audio controls src="music/release.mp3"></audio>
+      <audio controls src="music/settle.mp3"></audio>
+    </section>
+
+    <!-- Transition -->
+    <div class="transition">
+      <p>می‌توانی کمی مکث کنی و برای آرام‌تر شدن ذهنت به سؤال‌های زیر پاسخ بدهی.</p>
+      <p>اگر خواستی، چند سؤال کوتاه منتظر توست.</p>
+    </div>
+
+    <!-- Reflection -->
+    <ul class="reflection">
+      <li>امشب کدام فکر را می‌توانی راحت‌تر رها کنی و بگذاری برای فردا؟</li>
+      <li>بدنت الان بیشتر به چه چیزی نیاز دارد؟</li>
+      <li>یک چیز کوچک که امروز قدردانش هستی، چیست؟</li>
+    </ul>
+
+    <!-- Footer -->
+    <div class="footer">
+      برای امروز، کافی‌ست.
+    </div>
+
+  </div>
 </body>
 </html>
